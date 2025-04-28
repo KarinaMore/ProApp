@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="container shadow-0 mt-5 pt-5" style="max-height:100vh;">
+    <header>Login Here</header>
+    <form action="{% url 'user_login' %}" class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-box">
+            <label>User Name</label>
+            <input type="text" required name="user_name" />
+        </div>
+        <div class="input-box">
+            <label for="password">Password</label>
+            <div class="password-container">
+              <input type="password" class="form-control" id="password" required name="password" />
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
+              <span class="error-message"></span>
+            </div>
+          </div>
+        <button>Submit</button>
+    </form>
+</section>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+{% endblock %}

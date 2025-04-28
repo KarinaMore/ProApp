@@ -1,0 +1,124 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="d-flex justify-content-center mt-5">
+  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+    {% for profiles in profiles %}
+    <div class="card p-4">
+      
+      <div
+        class="image d-flex flex-column justify-content-center align-items-center"
+      >
+        <button class="btn btn-secondary">
+          <img src="{{ profiles.image.url }}" height="100" width="100" />
+        </button>
+        <span class="name mt-3">{{ profiles.first_name }}{{ profiles.last_name }}</span>
+        <span class="idd mt-2">{{ profiles.email }}</span>
+        <span class="idd1 mt-1">{{ profiles.mobile }}</span>
+        <span class="idd1 mt-1">{{ profiles.address }}</span>
+
+        <div class="d-flex mt-3">
+          <button class="btn1 btn-dark">Edit Profile</button>
+        </div>
+        <div
+          class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"
+        >
+          <span><i class="fa-brands text-primary fa-facebook"></i></span>
+          <span><i class="fa-brands text-dark fa-github"></i></span>
+          <span><i class="fa-brands text-info fa-twitter"></i></span>
+          <span><i class="fa-brands text-danger fa-instagram"></i></span>
+          <span><i class="fa-brands text-primary fa-linkedin"></i></span>
+        </div>
+        <div class="px-2 rounded mt-4 date">
+          <span class="join">Joined May,2021</span>
+        </div>
+      </div>
+
+      
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .card {
+    width: 350px;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+
+  .image img {
+    transition: all 0.5s;
+  }
+
+  .card:hover .image img {
+    transform: scale(1.5);
+  }
+
+  .btn {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+  }
+
+  .name {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .idd {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .idd1 {
+    font-size: 12px;
+  }
+
+  .number {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .follow {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444;
+  }
+
+  .btn1 {
+    height: 30px;
+    width: 100px;
+    border: none;
+    background-color: #000;
+    color: #aeaeae;
+    font-size: 12px;
+  }
+
+  .text span {
+    font-size: 13px;
+    color: #545454;
+    font-weight: 500;
+  }
+
+  .icons i {
+    font-size: 19px;
+  }
+
+  hr .new1 {
+    border: 1px solid;
+  }
+
+  .join {
+    font-size: 14px;
+    color: #a0a0a0;
+    font-weight: bold;
+  }
+
+  .date {
+    background-color: #ccc;
+  }
+</style>
+
+{% endblock %}

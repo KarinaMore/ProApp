@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="container" style="max-height:100vh;">
+    <header>Register Agent</header>
+    <form action="{% url 'agent_page' %}" method="post" class="form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="input-box">
+        <label>First Name</label>
+        <input type="text" name="first_name1" maxlength="15" required />
+        <span class="error-message"></span>
+      </div>
+      <div class="input-box">
+          <label>Middle Name</label>
+          <input type="text" name="middle_name2" maxlength="15" required />
+          <span class="error-message"></span>
+      </div>
+      <div class="input-box">
+          <label>Last Name</label>
+          <input type="text" name="last_name3" maxlength="15" required />
+          <span class="error-message"></span>
+      </div>
+      <div class="input-box">
+          <label>Mobile </label>
+          <input type="text" name="mobile1" maxlength="10" required />
+          <span class="error-message"></span>
+      </div>
+      <div class="input-box">
+        <label>Email </label>
+        <input type="email" name="email1" required />
+        <span class="error-message"></span>
+      </div>
+      
+
+      </div>
+      <label for="" class="mt-2">Aadhar</label>
+       <div class=" text-center rounded">
+          <div class="file-upload input-box">
+              <input class="form-control" name="aadhar1" type="file" id="formFile">
+              <span class="error-message"></span>
+          </div>
+        </div>
+
+        <label for="" class="mt-2">Photo</label>
+          <div class=" text-center rounded">
+            <div class="file-upload input-box">
+              <input class="form-control" name="photo1" type="file" id="formFile">
+              <span class="error-message"></span>
+            </div>
+          </div>
+
+      <button type="submit" class="mb-5" style="background-color: rgb(100, 98, 98) !important;">Register</button>
+    </form>
+</section>
+
+{% endblock %}

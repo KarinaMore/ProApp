@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+
+    <style>
+        /* @import url('https://fonts.cdnfonts.com/css/square721-bt'); */
+
+
+        body {
+            /* display: flex; */
+            align-items: center;
+            justify-content: center;
+            max-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            padding: 17px;
+            margin-top: 35px;
+            /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
+        }
+
+        .container header {
+            border-radius: 7px;
+            padding: 6px !important;
+            background-color: rgb(244, 252, 198);
+            font-size: 20px;
+            color: #333;
+            font-weight: 400;
+            text-align: center;
+
+        }
+
+        .container .form {
+            margin-top: 6px;
+        }
+
+        .form .input-box {
+            width: 100%;
+            margin-top: 3px;
+        }
+
+        .input-box label {
+            color: #333;
+            margin-top: 8px;
+            font-size: 15px;
+        }
+
+        .form :where(.input-box input, .select-box) {
+            position: relative;
+            height: 40px;
+            width: 100%;
+            outline: none;
+            font-size: 1rem;
+            color: #707070;
+            margin-top: 1px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+            padding: 0 15px;
+        }
+
+        .input-box input:focus {
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .select-box select {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            color: #707070;
+            font-size: 1rem;
+        }
+
+        .form button {
+            height: 45px;
+            width: 100%;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: rgb(130, 106, 251);
+        }
+
+        .form button:hover {
+            background: rgb(88, 56, 250);
+        }
+
+        @media screen and (max-width: 500px) {
+            .form .column {
+                flex-wrap: wrap;
+            }
+
+
+        }
+
+        .fileinput {
+            background: rgb(221, 218, 213);
+            border: 1px solid #505050;
+            color: #696969;
+        }
+
+        label.file_up>i.fa {
+            font-size: 15px;
+            margin-right: 10px;
+            color: #1081e0;
+        }
+
+        .inputfile {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 14px;
+            padding: 20px !important;
+            height: 130px;
+            width: 130px;
+            min-height: 10px;
+            /* border: 2px #ccc solid; */
+            color: #fff;
+            border-radius: 11px !important;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- Navbar -->
+   
+    <!-- Container wrapper -->
+   <nav>
+    <div class="container-fluid fixed-top bg-light">
+        <!-- Navbar brand -->
+        <div class="d-flex">
+            <a class="navbar-brand me-2">
+                <img src="/static/images/vl-logo_717073-109.png" alt="MDB Logo" loading="lazy"
+                    style="height: 45px;" /> <span class="mb-0 "
+                    style="font-size: 21px; color: rgb(161, 156, 156);">VLead Pro</span>
+            </a>
+            <div>
+                <p class="mb-0 vlead fs-6 text-center" style="margin-left: 120px;" >Welcome <br> Admin</p>
+            </div>
+
+        </div>
+       
+
+    </div>
+   </nav>
+    <!-- Navbar -->
+
+    
+
+<div class="container" style="max-height: 100vh; margin-top: 330px;">
+  <div class="row row-cols-2 row-cols-lg-4">
+    <div class="col">
+      <div class="box" style="background: #d1e5e6">
+        <a href="/agent_page/" style="text-decoration: none;"
+          ><p
+            class="mb-0 text-dark fs-5"
+            style="font-family: Times New Roman !important;"
+          >
+            Register <br />
+            Agent
+          </p>
+        </a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box" style="background: #dde2f0">
+        <a href="/manage_agent/" style="text-decoration: none;"
+          ><p
+            class="mb-0 text-dark fs-5"
+            style="font-family: Times New Roman !important"
+          >
+            Manage <br />
+            Agent
+          </p></a
+        >
+      </div>
+    </div>
+    <div class="col mt-3">
+      <div class="box" style="background: #e9ffcf">
+        <a href="" style="text-decoration: none;"
+          ><p
+            class="mb-0 text-dark fs-5"
+            style="font-family: Times New Roman !important"
+          >
+            Account <br />
+            Setting
+          </p></a
+        >
+      </div>
+    </div>
+    <div class="col mt-3">
+      <div class="box" style="background: #e3d3e6">
+        <a href="/help_hire/" style="text-decoration: none;"
+          ><p
+            class="mb-0 text-dark fs-5"
+            style="font-family: Times New Roman !important"
+          >
+            Help or Hire
+          </p></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <footer class="bg-body-tertiary text-center fixed-bottom">
+        <!-- Grid container -->
+        <div class="container-fluid" style="padding: 0 !important; margin: 0!important;">
+            <!-- Section: Form -->
+            <section style="padding: 0 !important; margin: 0!important;">
+                <!-- Nav tabs -->
+                <div class="row mx-0 my-0 nav nav-tabs d-flex justify-content-between">
+                    <div class="col-6 nav-item" style="padding: 0 !important; margin: 0!important; ">
+                        <a class="nav-link active text-light fs-6" data-toggle="tab" href="#agent-panel">Agent Panel</a>
+                    </div>
+                    <div class=" col-6 mx-0 nav-item" style="padding: 0 !important; margin: 0!important;">
+                        <a class="nav-link fs-6" data-toggle="tab" href="#lead-panel">Lead Panel</a>
+                    </div>
+                </div>
+    
+                <!-- Tab panes -->
+            </section>
+            <!-- Section: Form -->
+        </div>
+    </footer>
+
+
+    <!-- MDB -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+    <script>
+        function displayFileName(inputId) {
+            var input = document.getElementById(inputId);
+            var fileName = input.files[0].name;
+            var label = input.closest('.fileinput').querySelector('.file-name-label');
+            if (label) {
+                label.innerText = fileName;
+            } else {
+                var p = document.createElement('p');
+                p.classList.add('text-center', 'mb-0', 'file-name-label');
+                p.innerText = fileName;
+                input.closest('.fileinput').appendChild(p);
+            }
+        }
+    </script>
+
+    <!-- Include Bootstrap JS and custom JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const captureBtn = document.getElementById('capture-btn');
+        const imageInput = document.getElementById('image_data');
+        const cameraButton = document.getElementById('cameraButton');
+        const saveBtn = document.getElementById('save-btn');
+        const submitBtn = document.getElementById('submitBtn');
+        const constraints = { video: false };
+
+
+        function fun() {
+            if (video.style.display === 'none') {
+                video.style.display = 'block';
+            } else {
+                video.style.display = 'none';
+            }
+        }
+
+
+
+
+        let stream = null;
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(stream => {
+                    video.srcObject = stream;
+                    video.style.display = 'block';
+                    document.getElementById('cameraButton').style.display = 'none';
+                    captureBtn.style.display = 'block';
+                    saveBtn.style.display = 'block';
+                })
+                .catch(err => {
+                    console.error('Error accessing camera:', err);
+                    // alert('Error accessing camera. Please check your camera settings and try again.');
+                });
+        }
+
+
+        cameraButton.addEventListener('click', () => {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(mediaStream => {
+                    stream = mediaStream;
+                    video.srcObject = mediaStream;
+                    video.play();
+                    video.style.display = 'block';
+                })
+                .catch(err => {
+                    console.error('Error accessing camera:', err);
+                    alert('Error accessing camera. Please check your camera settings and try again.');
+                });
+        });
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(err => {
+                console.error('Error accessing camera:', err);
+            });
+
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('date').value = now.toISOString().slice(0, 10);
+            document.getElementById('time').value = now.toTimeString().slice(0, 8);
+        }
+
+        // Update date and time initially
+        updateDateTime();
+
+        // Update date and time every second
+        setInterval(updateDateTime, 1000);
+
+        // Function to update location (dummy implementation)
+        // Update location
+        function updateLocation() {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const locationElement = document.getElementById('location');
+                    locationElement.value = `Latitude: ${latitude}, Longitude: ${longitude}`;
+                }, error => {
+                    console.error('Error getting location:', error);
+                });
+            } else {
+                console.error('Geolocation is not supported.');
+            }
+        }
+
+
+        // Update location initially
+        updateLocation();
+
+        // Update location every 10 seconds
+        setInterval(updateLocation, 10000); // Update every 10 seconds
+
+
+        // Update location initially
+        updateLocation();
+
+
+        captureBtn.addEventListener('click', () => {
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageData = canvas.toDataURL('image/jpeg');
+            imageInput.value = imageData;
+            document.getElementById('captured-image').src = imageData;
+            saveBtn.style.display = 'block';
+        });
+
+        saveBtn.addEventListener('click', () => {
+            submitBtn.style.display = 'block';
+            saveBtn.style.display = 'none';
+        });
+    </script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var current = 0;
+        var tabs = $(".tab");
+        var tabs_pill = $(".tab-pills");
+
+        loadFormData(current);
+
+        function loadFormData(n) {
+            $(tabs_pill[n]).addClass("active");
+            $(tabs[n]).removeClass("d-none");
+            $("#back_button").attr("disabled", n == 0 ? true : false);
+            n == tabs.length - 1
+                ? $("#next_button").text("Submit").removeAttr("onclick").attr("type", "submit")
+                : $("#next_button")
+                    .attr("type", "button")
+                    .text("Next")
+                    .attr("onclick", "next()");
+        }
+
+        function next() {
+            $(tabs[current]).addClass("d-none");
+            $(tabs_pill[current]).removeClass("active");
+
+            current++;
+            loadFormData(current);
+        }
+
+        function back() {
+            $(tabs[current]).addClass("d-none");
+            $(tabs_pill[current]).removeClass("active");
+
+            current--;
+            loadFormData(current);
+        }
+
+    </script>
+</body>
+
+</html>

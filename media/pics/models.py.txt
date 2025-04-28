@@ -1,0 +1,18 @@
+class Events(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE,null=True)
+    event_name =models.CharField(max_length=100,null=True)
+    event_decription =models.CharField(max_length=100,null=True)
+    event_date =models.CharField(max_length=100,null=True)
+    event_time =models.CharField(max_length=100,null=True)
+    event_duration=models.CharField(max_length=100,null=True)
+    location =models.CharField(max_length=100,null=True)
+    event_img =models.ImageField(upload_to='pics/',null=True)
+    event_file=models.FileField(upload_to='innovationcer/',null=True)
+    email = models.CharField(max_length=100,null=True)
+
+
+
+
+class Guest(models.Model):
+    event = models.ForeignKey(Events, on_delete=models.CASCADE,null=True)
+    email=models.CharField(max_length=100,null=True)

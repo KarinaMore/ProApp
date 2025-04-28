@@ -1,0 +1,177 @@
+{% extends 'base2.html' %}
+{% block content %}
+<header>
+  <section class="pt-0">
+    <form id="photoForm" method="post" action="{% url 'customer_reg' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="container p-0 mt-0">
+
+        <div class="card-body p-0">
+
+          <div class="tab d-none">
+            <div>
+              <section class="container">
+                <header>Register Customer</header>
+                <div class="form">
+                  <div class="input-box">
+                    <label>First Name</label>
+                    <input type="text" name="f_name" maxlength="15" required />
+                    <span class="error-message"></span>
+                  </div>
+                  <div class="input-box">
+                    <label>Middle Name</label>
+                    <input type="text" name="m_name" maxlength="15" required />
+                    <span class="error-message"></span>
+                  </div>
+                  <div class="input-box">
+                    <label>Last Name</label>
+                    <input type="text" name="l_name" maxlength="15" required />
+                    <span class="error-message"></span>
+                  </div>
+                  <div class="input-box">
+                    <label>Mobile </label>
+                    <input type="text" name="mobile" required />
+                    <span class="error-message"></span>
+                  </div>
+                  <div class="input-box">
+                    <label>Email </label>
+                    <input type="email" name="email" required />
+                    <span class="error-message"></span>
+                  </div>
+                </div>
+
+                <label for="" class="mt-2 mb-0">Aadhar file</label>
+                <div class="text-center rounded border border-secondary">
+                  <div class="file-upload input-box">
+                    <input class="form-control" name="aadhar" type="file" id="formFile">
+                    <span class="error-message"></span>
+                  </div>
+                </div>
+
+                <label for="" class="mt-2 mb-0">Profile Photo</label>
+                <div class="fileinput text-center rounded">
+                  <div class="file-upload input-box">
+                    <input class="form-control" name="profile_photo" type="file" id="formFile">
+                    <span class="error-message"></span>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+
+          </div>
+
+          <div class="tab d-none">
+            <div>
+              <section class="container">
+                <header>Register Customer</header>
+                <div>
+                  <div class="input-box">
+                    <label>Company Name</label>
+                    <input type="text" class="form-control" required name="c_name" />
+                    <span class="error-message"></span>
+                  </div>
+
+                  <div class="input-box">
+                    <label>Company Registration No</label>
+                    <input type="text" class="form-control" required name="c_register_no" />
+                    <span class="error-message"></span>
+                  </div>
+
+                  <div class="input-box">
+                    <label> Company Email </label>
+                    <input type="email" class="form-control" required name="c_email" />
+                    <span class="error-message"></span>
+                  </div>
+
+                  <div class="input-box">
+                    <label> Company Mobile </label>
+                    <input type="text" class="form-control" required name="c_mobile" />
+                    <span class="error-message"></span>
+                  </div>
+
+                  <div class="input-box">
+                    <label>Company Address</label>
+                    <input type="text" class="form-control" required name="c_address" />
+                    <span class="error-message"></span>
+                  </div>
+                </div>
+
+                <label for="" class="mt-2 mb-0">Company Incorporation</label>
+                <div class="fileinput text-center rounded">
+                  <div class="file-upload">
+                    <input class="form-control" name="c_incorporation" type="file" id="formFile">
+                    <span class="error-message"></span>
+                  </div>
+                </div>
+
+                <label for="" class="mt-2 mb-0">PAN Card</label>
+                <div class="fileinput text-center rounded">
+                  <div class="file-upload ">
+                    <input class="form-control" name="p_card" type="file" id="formFile">
+                    <span class="error-message"></span>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="tab d-none">
+            <div class="container my-5">
+              <h3 class="text-center">Photo Submission PWA</h3>
+              <div class="row">
+                <div class="col-md-7 mx-auto bg-light p-3">
+                  <div class="form-data">
+                    <input type="hidden" id="date" name="date" class="form-control mb-3" readonly />
+                  </div>
+                  <div class="form-data">
+                    <input type="hidden" id="time" name="time" class="form-control mb-3" readonly />
+                  </div>
+                  <div class="form-data">
+                    <input type="hidden" id="location" name="location" class="form-control mb-3" readonly />
+                  </div>
+                  <div class="form-data">
+                    <input type="hidden" id="name" class="form-control mb-3" />
+                  </div>
+
+                  <div class="form-data">
+                    <video id="video" class="w-100 h-100 mt-4" autoplay></video>
+                    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+                    <img id="captured-image" src="#" class="w-100" style="display: none;">
+                    <input type="hidden" id="image_data" name="image_data">
+                    <div class="d-flex justify-content-center mt-2">
+                      <button type="button" id="cameraButton" class="btn btn-primary rounded-circle"><i
+                          class="fa fa-camera"></i></button>
+                      <button type="button" id="flip-camera-btn" class="btn btn-secondary rounded-circle mx-2"><i
+                          class="fa-solid fa-arrows-rotate"></i></button>
+                    </div>
+                  </div>
+                  <div class="form-data mt-3 d-flex justify-content-center">
+                    <button type="submit" id="submitBtn" class="btn btn-success mx-2" style="display: none;">Submit</button>
+                    <button id="retake-btn" type="button" class="btn btn-danger mx-2"
+                      style="display: none;"><i class="fa-solid fa-rotate-right"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class=" pb-2 mb-5">
+        <div class="d-flex justify-content-center">
+          <button type="button" id="back_button" class="btn btn-link" onclick="back()">
+            Back
+          </button>
+          <button type="button" id="next_button" class="btn btn-primary" onclick="next()">
+            Next
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+</header>
+
+{% endblock %}

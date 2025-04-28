@@ -1,0 +1,823 @@
+
+
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    />
+
+    <title>Document</title>
+
+    <style>
+      /* @import url('https://fonts.cdnfonts.com/css/square721-bt'); */
+
+      body {
+        /* display: flex; */
+        align-items: center;
+        justify-content: center;
+        max-height: 100vh;
+      }
+
+      .container {
+        position: relative;
+        max-width: 700px;
+        width: 100%;
+        background: #fff;
+        padding: 17px;
+        margin-top: 35px;
+        /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
+      }
+
+      .container header {
+        border-radius: 7px;
+        padding: 6px !important;
+        background-color: rgb(244, 252, 198);
+        font-size: 20px;
+        color: #333;
+        font-weight: 400;
+        text-align: center;
+      }
+
+      .container .form {
+        margin-top: 6px;
+      }
+
+      .form .input-box {
+        width: 100%;
+        margin-top: 3px;
+      }
+
+      .input-box label {
+        color: #333;
+        margin-top: 8px;
+        font-size: 15px;
+      }
+
+      .form :where(.input-box input, .select-box) {
+        position: relative;
+        height: 40px;
+        width: 100%;
+        outline: none;
+        font-size: 1rem;
+        color: #707070;
+        margin-top: 1px;
+        border: 1px solid #999999;
+        border-radius: 6px;
+        padding: 0 15px;
+      }
+
+      .input-box input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+      }
+
+      .select-box select {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+        color: #707070;
+        font-size: 1rem;
+      }
+
+      .form button {
+        height: 45px;
+        width: 100%;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-top: 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: rgb(130, 106, 251);
+      }
+
+      .form button:hover {
+        background: rgb(88, 56, 250);
+      }
+
+      @media screen and (max-width: 500px) {
+        .form .column {
+          flex-wrap: wrap;
+        }
+      }
+
+      .fileinput {
+        background: rgb(221, 218, 213);
+        border: 1px solid #505050;
+        color: #696969;
+      }
+
+      label.file_up > i.fa {
+        font-size: 15px;
+        margin-right: 10px;
+        color: #1081e0;
+      }
+
+      .inputfile {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+      }
+
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 14px;
+        padding: 20px !important;
+        height: 130px;
+        width: 130px;
+        min-height: 10px;
+        /* border: 2px #ccc solid; */
+        color: #fff;
+        border-radius: 11px !important;
+        text-align: center;
+      }
+
+      /* errormassage */
+
+      .error-message {
+        color: red;
+        font-size: 12px;
+      }
+
+      /* errormassage */
+
+      /* password button */
+
+      .password-container {
+        position: relative;
+      }
+
+      .bi {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        /* Adjust this value as needed */
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+
+      /* password button */
+
+      /* Add CSS for the animation */
+      @keyframes rotateArrow {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(180deg);
+        }
+      }
+
+      /* Apply animation to the arrow icon */
+      .rotate-icon {
+        animation: rotateArrow 0.5s linear;
+      }
+
+      /* model view Profile */
+
+      .card {
+        background-color: #fff;
+        width: 280px;
+        border-radius: 33px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding: 2rem !important;
+      }
+      .top-container {
+        display: flex;
+        align-items: center;
+      }
+      .profile-image {
+        border-radius: 10px;
+        border: 2px solid #5957f9;
+      }
+      .name {
+        font-size: 15px;
+        font-weight: bold;
+        color: #272727;
+        position: relative;
+        top: 8px;
+      }
+      .mail {
+        font-size: 14px;
+        color: grey;
+        position: relative;
+        top: 2px;
+      }
+      .middle-container {
+        background-color: #eee;
+        border-radius: 12px;
+      }
+      .middle-container:hover {
+        border: 1px solid #5957f9;
+      }
+      .dollar-div {
+        background-color: #5957f9;
+        padding: 12px;
+        border-radius: 10px;
+      }
+      .round-div {
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .dollar {
+        font-size: 16px !important;
+        color: #5957f9 !important;
+        font-weight: bold !important;
+      }
+
+      .current-balance {
+        font-size: 15px;
+        color: #272727;
+        font-weight: bold;
+      }
+      .amount {
+        color: #5957f9;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .dollar-sign {
+        font-size: 16px;
+        color: #272727;
+        font-weight: bold;
+      }
+
+      .recent-border {
+        border-left: 2px solid #5957f9;
+        display: flex;
+        align-items: center;
+      }
+      .recent-border:hover {
+        border-bottom: 1px solid #dee2e6 !important;
+      }
+
+      .recent-orders {
+        font-size: 16px;
+        font-weight: 700;
+        color: #5957f9;
+        margin-left: 2px;
+      }
+
+      .wishlist {
+        font-size: 16px;
+        font-weight: 700;
+        color: #272727;
+      }
+      .wishlist-border:hover {
+        border-bottom: 1px solid #dee2e6 !important;
+      }
+      .fashion-studio {
+        font-size: 16px;
+        font-weight: 700;
+        color: #272727;
+      }
+      .fashion-studio-border:hover {
+        border-bottom: 1px solid #dee2e6 !important;
+      }
+
+      /* model view profile */
+
+      .modal-backdrop {
+        opacity: 0 !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+
+    <!-- Container wrapper -->
+    <nav>
+      <div class="container-fluid fixed-top">
+        <!-- Navbar brand -->
+        <div class="d-flex">
+          <a class="navbar-brand me-2">
+            <img
+              src="{% static '../static/images/vl-logo_717073-109.png' %}"
+              alt="MDB Logo"
+              loading="lazy"
+              style="height: 45px"
+              href="{% url 'customer_menu_card' %}"
+            />
+            <span
+              class="mb-0"
+              style="font-size: 21px; color: rgb(161, 156, 156)"
+              >VLead Pro</span
+            >
+          </a>
+          <!-- Avatar -->
+          <div class="dropdown">
+            <a
+              data-mdb-dropdown-init
+              class="dropdown-toggle d-flex align-items-center hidden-arrow"
+              href="#"
+              id="navbarDropdownMenuAvatar"
+              role="button"
+              aria-expanded="false"
+            > 
+            {% for p in profiles %}
+
+              <img
+                src="{{p.image.url}}"
+                class="rounded-circle"
+                height="35"
+                alt="Black and White Portrait of a Man"
+                loading="lazy"
+                style="margin-top: 5px; margin-left: 148px"
+              />
+
+            {% endfor %}  
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="navbarDropdownMenuAvatar"
+            >
+              <li>
+                <a
+                  type="button"
+                  class="dropdown-item"
+                  href="{% url 'view_profile' %}"
+                  >My profile</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Settings</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'logout_view2' %}">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    {% block content %}{% endblock %}
+
+    <footer class="bg-body-tertiary text-center fixed-bottom">
+      <!-- Grid container -->
+      <div
+        class="container-fluid"
+        style="padding: 0 !important; margin: 0 !important"
+      >
+        <!-- Section: Form -->
+        <section style="padding: 0 !important; margin: 0 !important">
+          <!-- Nav tabs -->
+          <div
+            class="row mx-0 my-0 nav nav-tabs d-flex justify-content-between"
+          >
+            <div
+              class="col-6 nav-item"
+              style="padding: 0 !important; margin: 0 !important"
+            >
+              <a
+                class="nav-link active text-dark fs-6"
+                data-toggle="tab"
+                href="#agent-panel"
+                >Agent Panel</a
+              >
+            </div>
+            <div
+              class="col-6 mx-0 nav-item"
+              style="padding: 0 !important; margin: 0 !important"
+            >
+              <a class="nav-link fs-6" data-toggle="tab" href="{% url 'customerleadpanel_tab' %}"
+                >Lead Panel</a
+              >
+            </div>
+          </div>
+
+          <!-- Tab panes -->
+        </section>
+        <!-- Section: Form -->
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+    ></script>
+    <script>
+      function displayFileName(inputId) {
+        var input = document.getElementById(inputId);
+        var fileName = input.files[0].name;
+        var label = input
+          .closest(".fileinput")
+          .querySelector(".file-name-label");
+        if (label) {
+          label.innerText = fileName;
+        } else {
+          var p = document.createElement("p");
+          p.classList.add("text-center", "mb-0", "file-name-label");
+          p.innerText = fileName;
+          input.closest(".fileinput").appendChild(p);
+        }
+      }
+    </script>
+
+    <!-- Include Bootstrap JS and custom JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const video = document.getElementById("video");
+      const canvas = document.getElementById("canvas");
+      const captureBtn = document.getElementById("cameraButton");
+      const imageInput = document.getElementById("image_data");
+      const cameraButton = document.getElementById("cameraButton");
+      const saveBtn = document.getElementById("save-btn");
+      const submitBtn = document.getElementById("submitBtn");
+      const constraints = { video: true };
+
+      let stream = null;
+      function startCamera() {
+        navigator.mediaDevices
+          .getUserMedia(constraints)
+          .then((stream) => {
+            video.srcObject = stream;
+            video.style.display = "block";
+            document.getElementById("cameraButton").style.display = "none";
+            captureBtn.style.display = "block";
+            saveBtn.style.display = "block";
+          })
+          .catch((err) => {
+            console.error("Error accessing camera:", err);
+            alert(
+              "Error accessing camera. Please check your camera settings and try again."
+            );
+          });
+      }
+
+      cameraButton.addEventListener("click", () => {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then((mediaStream) => {
+            stream = mediaStream;
+            video.srcObject = mediaStream;
+            video.play();
+          })
+          .catch((err) => {
+            console.error("Error accessing camera:", err);
+            alert(
+              "Error accessing camera. Please check your camera settings and try again."
+            );
+          });
+      });
+
+      navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then((stream) => {
+          video.srcObject = stream;
+        })
+        .catch((err) => {
+          console.error("Error accessing camera:", err);
+        });
+
+      // Function to update date and time
+      function updateDateTime() {
+        const now = new Date();
+        document.getElementById("date").value = now.toISOString().slice(0, 10);
+        document.getElementById("time").value = now.toTimeString().slice(0, 8);
+      }
+
+      // Update date and time initially
+      updateDateTime();
+
+      // Update date and time every second
+      setInterval(updateDateTime, 1000);
+
+      // Function to update location (dummy implementation)
+      // Update location
+      function updateLocation() {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+              const locationElement = document.getElementById("location");
+              locationElement.value = Latitude: ${latitude}, Longitude: ${longitude};
+            },
+            (error) => {
+              console.error("Error getting location:", error);
+            }
+          );
+        } else {
+          console.error("Geolocation is not supported.");
+        }
+      }
+
+      // Update location initially
+      updateLocation();
+
+      // Update location every 10 seconds
+      setInterval(updateLocation, 10000); // Update every 10 seconds
+
+      // Update location initially
+      updateLocation();
+
+      function closevid(event) {
+        event.preventDefault(); // Prevent the default behavior of the button
+        document.getElementById("video").style.display = "none"; // Hide video element
+      }
+
+      captureBtn.addEventListener("click", () => {
+        canvas
+          .getContext("2d")
+          .drawImage(video, 0, 0, canvas.width, canvas.height);
+        const imageData = canvas.toDataURL("image/jpeg");
+        imageInput.value = imageData;
+        document.getElementById("video").style.display = "none"; // Hide video element
+        document.getElementById("captured-image").src = imageData;
+        document.getElementById("captured-image").style.display = "block"; // Display captured image
+        document.getElementById("submitBtn").style.display = "none"; // Display captured image
+        document.getElementById("retake-btn").style.display = "block"; // Display captured image
+        captureBtn.style.display = "none"; // Hide capture button
+      });
+
+      // Function to retake the image
+      function retakeImage() {
+        video.style.display = "block"; // Show video element
+        document.getElementById("captured-image").style.display = "none"; // Hide captured image
+        document.getElementById("retake-btn").style.display = "none"; // Hide captured image
+        captureBtn.style.display = "block"; // Show capture button
+        submitBtn.style.display = "none"; // Hide save button
+      }
+
+      // Event listener for retake button
+      document
+        .getElementById("retake-btn")
+        .addEventListener("click", retakeImage);
+
+      saveBtn.addEventListener("click", () => {
+        saveBtn.style.display = "none";
+      });
+    </script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- next button  -->
+    <script>
+      var current = 0;
+      var tabs = $(".tab");
+      var tabs_pill = $(".tab-pills");
+
+      loadFormData(current);
+
+      function loadFormData(n) {
+        $(tabs_pill[n]).addClass("active");
+        $(tabs[n]).removeClass("d-none");
+        $("#back_button").attr("disabled", n == 0 ? true : false);
+
+        if (n === tabs.length - 1) {
+          $("#next_button").text("Submit");
+        } else {
+          $("#next_button").text("Next");
+        }
+      }
+
+      function next() {
+        // Check if all required fields in the current tab are filled
+        var currentTab = $(tabs[current]);
+        var isValid = true;
+
+        currentTab.find(".error-message").text(""); // Remove any existing error messages
+
+        currentTab.find("input[required]").each(function () {
+          if (!$(this).val()) {
+            isValid = false;
+            // Display error message below the input field
+            $(this).siblings(".error-message").text("This field is required.");
+          }
+        });
+
+        // If all required fields are filled, proceed to the next tab
+        if (isValid) {
+          currentTab.addClass("d-none");
+          $(tabs_pill[current]).removeClass("active");
+
+          current++;
+          if (current >= tabs.length) {
+            $("#photoForm").submit(); // Submit the form when reaching the last tab
+          } else {
+            loadFormData(current);
+          }
+        }
+      }
+
+      function next2() {
+        var currentTab = $(tabs[current]);
+        var isValid = true;
+
+        currentTab.find(".error-message").text(""); // Remove any existing error messages
+
+        currentTab.find("input[required]").each(function () {
+          if (!$(this).val()) {
+            isValid = false;
+            // Display error message below the input field
+            $(this).siblings(".error-message").text("This field is required.");
+          }
+        });
+
+        if (isValid) {
+          currentTab.addClass("d-none");
+          $(tabs_pill[current]).removeClass("active");
+
+          current++;
+          if (current >= tabs.length) {
+            $("#back_button").hide(); // Hide the back button when reaching the last tab
+            $("#next_button").hide(); // Submit the form when reaching the last tab
+            $("#registerForm").submit(); // Submit the form when reaching the last tab
+          } else {
+            loadFormData(current);
+          }
+        }
+      }
+
+      function back() {
+        $(tabs[current]).addClass("d-none");
+        $(tabs_pill[current]).removeClass("active");
+
+        current--;
+        loadFormData(current);
+      }
+    </script>
+
+    <!-- next button  End-->
+
+    <!-- password hide and show -->
+
+    <script>
+      const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#password");
+
+      togglePassword.addEventListener("click", (event) => {
+        // Prevent default behavior of the link
+        event.preventDefault();
+
+        // Toggle the type attribute using getAttribute() method
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+
+        // Toggle the eye and bi-eye icon
+        togglePassword.classList.toggle("bi-eye");
+        togglePassword.classList.toggle("bi-eye-slash");
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const togglePassword = document.querySelectorAll(".toggle-password");
+
+        togglePassword.forEach((icon) => {
+          icon.addEventListener("click", () => {
+            const targetId = icon.dataset.target;
+            const passwordField = document.getElementById(targetId);
+
+            const type =
+              passwordField.getAttribute("type") === "password"
+                ? "text"
+                : "password";
+            passwordField.setAttribute("type", type);
+
+            // Toggle the eye and bi-eye icon classes
+            icon.classList.toggle("bi-eye-slash");
+            icon.classList.toggle("bi-eye");
+          });
+        });
+      });
+    </script>
+
+    <!-- password hide and show End-->
+
+    <!-- flip camera  -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById("video");
+        const flipCameraBtn = document.getElementById("flip-camera-btn");
+        let stream = null;
+
+        // Function to toggle between front and back camera
+        function toggleCamera() {
+          const facingMode =
+            video.srcObject?.getVideoTracks()[0].getSettings().facingMode ===
+            "user"
+              ? "environment"
+              : "user";
+          const constraints = { video: { facingMode: facingMode } };
+
+          // Stop the current stream
+          if (stream) {
+            stream.getTracks().forEach((track) => track.stop());
+          }
+
+          // Get new stream with updated constraints
+          navigator.mediaDevices
+            .getUserMedia(constraints)
+            .then((newStream) => {
+              stream = newStream;
+              video.srcObject = newStream;
+              video.play();
+            })
+            .catch((err) => {
+              console.error("Error accessing camera:", err);
+              alert(
+                "Error accessing camera. Please check your camera settings and try again."
+              );
+            });
+        }
+
+        // Add event listener to flip camera button
+        flipCameraBtn.addEventListener("click", toggleCamera);
+
+        // Start with the default camera (user facing)
+        toggleCamera();
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const flipCameraBtn = document.getElementById("flip-camera-btn");
+
+        // Function to toggle between front and back camera
+        function toggleCamera() {
+          // Toggle the rotate-icon class to trigger the animation
+          flipCameraBtn.querySelector("i").classList.toggle("rotate-icon");
+          // Rest of your code for camera toggling...
+        }
+
+        // Add event listener to flip camera button
+        flipCameraBtn.addEventListener("click", toggleCamera);
+      });
+    </script>
+
+    <!-- flip camera  End-->
+
+    <!-- delete button -->
+
+    <script>
+      // Add event listener to the delete button
+      document
+        .getElementById("confirmDelete")
+        .addEventListener("click", function () {
+          // Perform delete action here
+          // For example, you can use AJAX to send delete request to the server
+
+          // After successful deletion, close the modal
+          var deleteModal = new bootstrap.Modal(
+            document.getElementById("deleteModal")
+          );
+          deleteModal.hide();
+        });
+    </script>
+  </body>
+</html>

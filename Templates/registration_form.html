@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+
+  <section class="mt-4 mt-lg-5">
+
+
+    <form class="" id="registerForm"  method="post" action="{% url 'registration_user' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="container">
+        <div class="card-body">
+          <div class="tab d-none">
+            <section class="container mt-0">
+              <header>Admin Registration</header>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="input-box">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" maxlength="15" name="first_name" pattern="[A-Za-z]+"
+                      title="Only letters are allowed" required />
+                    <span class="error-message"></span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="input-box">
+                    <label>Middle Name</label>
+                    <input type="text" class="form-control" maxlength="15" name="middle_name" pattern="[A-Za-z]+"
+                      title="Only letters are allowed" required />
+                    <span class="error-message"></span>
+
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="input-box">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" maxlength="15" name="last_name" pattern="[A-Za-z]+"
+                      title="Only letters are allowed" required />
+                    <span class="error-message"></span>
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-box">
+                    <label>Email </label>
+                    <input type="email" class="form-control" name="email" required />
+                    <span class="error-message"></span>
+
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-box">
+                      <label>Mobile </label>
+                      <input type="text" id="mobile_code" class="form-control" maxlength="10" pattern="[0-9]{10}" placeholder=""
+                          name="mobile" required>
+                      <span class="error-message"></span>
+                  </div>
+              </div>
+              
+              </div>
+              <div class="input-box">
+                <label>Address</label>
+                <input type="text" class="form-control" required name="address" />
+                <span class="error-message"></span>
+
+              </div>
+              <label for="" class="mt-1 mb-0">Profile Photo</label>
+              <div class="fileinput text-center rounded border-0">
+                <div class="file-upload">
+                  <input class="form-control" name="image" type="file" id="formFile">
+                  <span class="error-message"></span>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="tab d-none">
+            <div>
+              <section class="container" style="max-height:100vh;">
+                <header>Admin Registration</header>
+                <div class="input-box">
+                  <label>Company Name</label>
+                  <input type="text" required class="form-control" maxlength="15" name="company_name" />
+                  <span class="error-message"></span>
+
+                </div>
+
+                <div class="input-box">
+                  <label>Company Registration No</label>
+                  <input type="text" required class="form-control" name="company_register_no" />
+                  <span class="error-message"></span>
+
+                </div>
+
+                <div class="input-box">
+                  <label> Company Email </label>
+                  <input type="email" class="form-control"
+                    name="company_email" required />
+                  <span class="error-message"></span>
+
+                </div>
+
+                <div class="input-box">
+                  <label for="company_mobile">Company Mobile</label>
+                  <input type="text" class="form-control" id="company_mobile" name="company_mobile" maxlength="10" required>
+                  <span class="error-message"></span>
+              </div>
+              
+
+                <div class="input-box">
+                  <label>Company Address</label>
+                  <input type="text" class="form-control" name="company_address" required />
+                </div>
+              </section>
+            </div>
+            <div class="mx-3">
+              <label for="" class="mt-1 mb-0">Company Incorporation</label>
+              <div class="fileinput text-center rounded border-0">
+                <div class="file-upload">
+                  <input class="form-control" name="company_incorporation" type="file" id="formFile">
+                  <span class="error-message"></span>
+                </div>
+              </div>
+            </div>
+            <div class="mx-3">
+              <label for="" class="mt-1 mb-0">PAN Card</label>
+              <div class="fileinput text-center rounded border-0">
+                <div class="file-upload">
+                  <input class="form-control" name="pan_card" type="file" id="formFile">
+                  <span class="error-message"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab d-none">
+            <section class="container" style="max-height:100vh;">
+              <header>Admin Registration</header>
+              <div class="input-box">
+                <label>Username</label>
+                <input type="text" required class="form-control" name="user_name" />
+                <span class="error-message"></span>
+
+                <div class="input-box">
+                  <label for="password">Password</label>
+                  <div class="password-container">
+                    <input type="password" class="form-control" id="password" required name="password" />
+                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                    <span class="error-message"></span>
+                  </div>
+                </div>
+                <div class="input-box">
+                  <label for="confirm_password">Confirm password</label>
+                  <div class="password-container">
+                    <input type="password" class="form-control" id="confirm_password" required
+                      name="confirm_password" />
+                    <i class="bi bi-eye-slash toggle-password" data-target="confirm_password"></i>
+                    <span class="error-message"></span>
+                  </div>
+                </div>
+            </section>
+          </div>
+
+
+        </div>
+      </div>
+          
+      <div class="mb-5 pb-1">
+        <div class="d-flex justify-content-center mb-3">
+          <button type="button" id="back_button" class="btn btn-link " style="text-decoration: none;"
+            onclick="back()">Back</button>
+          <button type="button" id="next_button" class="btn btn-primary" onclick="next2()">Next</button>
+        </div>
+      </div>
+    </form>
+
+  </section>
+
+</header>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+{% endblock %}
+
+

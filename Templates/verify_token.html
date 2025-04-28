@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="">
+        <div class="mt-5 mx-auto">
+            {% if messages %}
+            {% for message in messages %}
+            <h5 class="my-3" style="color: red;text-align: center;margin-top: 5px;background-color: white;">{{message}}</h5>
+            {% endfor %}
+            {% endif %}
+            <div class="shadow-lg p-lg-5 p-2 text-center w-100" style="background-color: rgb(255, 255, 255)">
+                <i class="fa fa-key fs-1 text-success"></i>
+                <h4 class="my-4">Please enter the token sent to your email:</h4>
+                <form method="post" class="my-3">
+                    {% csrf_token %}
+                    <input type="text"  autocomplete="off"  class="mx-0 py-2 rounded-3 text-center text-dark fw-bold" id="otp1" name="otp1" maxlength="1" size="1"
+                        oninput="moveToNext(this, 'otp2')" required>
+                    <input type="text"  autocomplete="off"  class="mx-0 py-2 rounded-3 text-center text-dark fw-bold" id="otp2" name="otp2" maxlength="1" size="1"
+                        oninput="moveToNext(this, 'otp3')" required>
+                    <input type="text"  autocomplete="off"  class="mx-0 py-2 rounded-3 text-center text-dark fw-bold" id="otp3" name="otp3" maxlength="1" size="1"
+                        oninput="moveToNext(this, 'otp4')" required>
+                    <input type="text"  autocomplete="off"  class="mx-0 py-2 rounded-3 text-center text-dark fw-bold" id="otp4" name="otp4" maxlength="1" size="1"
+                        oninput="moveToNext(this, 'otp5')" required>
+                    <input type="text"  autocomplete="off"  class="mx-0 py-2 rounded-3 text-center text-dark fw-bold" id="otp5" name="otp5" maxlength="1" size="1"
+                        oninput="moveToNext(this, 'otp6')" required>
+                    <input type="text"  autocomplete="off"  class="mx-0 py-2 rounded-3 text-center text-dark fw-bold" id="otp6" name="otp6" maxlength="1" size="1"
+                        oninput="moveToNext(this, 'otp6')" required>
+                    <br><br>
+                    <input type="hidden" id="token" name="token">
+                    <button class="btn mt-3" style="background-color: navy;color: white;font-size: 13px;" type="button" onclick="combineToken()">Verify Token</button>
+                </form>
+
+                <script>
+                    function moveToNext(current, nextId) {
+                        if (current.value.length >= 1) {
+                            document.getElementById(nextId).focus();
+                        } else if (current.value.length === 0) {
+                            var prevId = 'otp' + (parseInt(current.id.slice(-1)) - 1);
+                            if (prevId !== 'otp0') {
+                                document.getElementById(prevId).focus();
+                            }
+                        }
+                    }
+
+
+                    function combineToken() {
+                        var otp1 = document.getElementById("otp1").value;
+                        var otp2 = document.getElementById("otp2").value;
+                        var otp3 = document.getElementById("otp3").value;
+                        var otp4 = document.getElementById("otp4").value;
+                        var otp5 = document.getElementById("otp5").value;
+                        var otp6 = document.getElementById("otp6").value;
+                        var combinedToken = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
+                        document.getElementById("token").value = combinedToken;
+                        // Now submit the form
+                        document.querySelector('form').submit();
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

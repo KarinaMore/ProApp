@@ -1,0 +1,20 @@
+{% extends 'base2.html' %}
+{% block content %}
+
+<section class="container shadow-0 mt-5 pt-5" style="max-height:100vh;">
+    <header>Login Here</header>
+    <form action="{% url 'customer_user_login' %}" class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-box">
+            <label>User Name</label>
+            <input type="text" required name="user_name1" />
+        </div>
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" required name="password1" />
+        </div>
+        <button>Submit</button>
+    </form>
+</section>
+
+{% endblock %}

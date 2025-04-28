@@ -1,0 +1,131 @@
+{% extends 'base.html' %} {% block content %}
+
+<main class="hm-gradient">
+  <!--MDB Tables-->
+  <div class="container mt-4">
+    <div class="mb-4">
+      <header class="mt-4">Manage Agent</header>
+      <div class="card-body mt-4">
+        <!--Table-->
+        <table class="table table-hover">
+          <!--Table head-->
+          <thead
+            class="mdb-color"
+            style="background-color: rgb(241 241 240) !important"
+          >
+            <tr>
+              <th class="fw-bold" style="width: 75px">ID</th>
+              <th class="fw-bold" style="width: 200px">Name</th>
+              <th class="fw-bold" style="width: 100px">Detail</th>
+              <th class="fw-bold">.</th>
+            </tr>
+          </thead>
+
+          <!--Table head-->
+          <!--Table body-->
+          <tbody>
+
+            {% for agent in manage_agent %}
+            <tr>
+
+              <th  id="uniqueId"  scope="row">{{ agent.unique_id }}</th>
+              <td>{{ agent.first_name1 }} {{ agent.last_name3 }}</td>
+              <td>
+                <button
+                  class="bg-success text-light rounded-2"
+                  style="width: 65px"
+                >
+                  View
+                </button>
+              </td>
+              <!-- Include Bootstrap modal dialog -->
+              <div
+                class="modal fade"
+                id="deleteModal{{agent.id}}"
+                tabindex="-1"
+                aria-labelledby="deleteModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">
+                        Confirm Delete
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you want to delete this item?
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                      <a href="{% url 'delete' agent.id %}">
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        id="confirmDelete"
+                      >
+                        Delete
+                      </button>
+                    </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button to trigger modal -->
+              <td style="font-size: 15px">
+                <i
+                  class="fa-solid fa-trash text-danger"
+                  id="deleteBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteModal{{agent.id}}"
+                ></i>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <!--Table body-->
+        </table>
+        <!--Table-->
+      </div>
+    </div>
+  </div>
+  <!--MDB Tables-->
+</main>
+
+<script>
+    // Generate a unique ID
+    var uniqueId = generateUUID();
+
+    // Set the ID of the element
+    var element = document.getElementById('uniqueElement');
+    element.id = uniqueId;
+
+    // Log the generated ID
+    console.log('Generated unique ID:', uniqueId);
+
+    // Function to generate UUID
+    function generateUUID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0,
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+</script>
+
+
+
+{% endblock %}

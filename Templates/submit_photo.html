@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-5">
+    <h3 class="text-center">Photo Submission PWA</h3>
+    <form id="photoForm" method="post" action="{% url 'submit_photo' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-7 mx-auto bg-light p-3">
+                <div class="form-data">
+                    <input type="hidden" id="date" name="date" class="form-control mb-3" readonly>
+                </div>
+                <div class="form-data">
+                    <input type="hidden" id="time" name="time" class="form-control mb-3" readonly>
+                </div>
+                <div class="form-data ">
+                    <input type="hidden" id="location" name="location" class="form-control mb-3" readonly>
+
+                </div>
+                <div class="form-data">
+                    <input type="hidden" id="name" class="form-control mb-3">
+                </div>
+                <div class="form-data">
+                    <video id="video" class="w-100 h-100 mt-4" autoplay></video>
+                    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+                    <img id="captured-image" src="#" class="w-100" style="display: none;">
+                    <input type="hidden" id="image_data" name="image_data">
+                    <div class="d-flex justify-content-center mt-2">
+                        <button type="button" id="cameraButton" class="btn btn-primary rounded-circle"><i class="fa fa-camera"></i></button>
+                        <button type="button" id="flip-camera-btn" class="btn btn-secondary rounded-circle mx-2"><i class="fas fa-redo"></i></button>
+                    </div>
+                </div>
+                <div class="form-data mt-3 d-flex justify-content-center">
+                    <button type="submit" id="submitBtn" class="btn btn-success mx-2" style="display: none;">Submit</button>
+                    <button id="retake-btn" type="button" class="btn btn-danger mx-2" style="display: none;">Retake</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

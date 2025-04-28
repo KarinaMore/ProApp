@@ -1,0 +1,184 @@
+
+
+
+
+<div class="tab-pane fade" id="v-tabs-event" role="tabpanel" aria-labelledby="v-tabs-event-tab">
+      <form action="{% url 'event' u.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <main style="margin-top: 90px !important">
+          <div class="container pt-1 px-lg-0 ps-lg-3 mt-5 mt-lg-0">
+            <div class="mx-2 me-lg-4 mb-5">
+              <p class="mb-3 mt-3 mt-lg-0 text-center text-lg-start d-flex align-items-center" style="
+                    color: #d1dde6;
+                    font-size: 29px !important;
+                    font: normal normal 300 38px/57px Poppins;
+                  ">
+                <span class="material-symbols-outlined me-3" style="font-size: 45px !important">
+                  stack_star
+                </span>
+                Schedule Events
+              </p>
+
+              <div class="mb-3 rounded rounded-4" style="background-color: rgb(251, 248, 248)">
+                <p class="text-secondary fw-bold px-5 py-3 rounded-start rounded-3" style="
+                      background-color: rgb(237, 235, 235);
+                      font-size: 18px;
+                    ">
+                  Schedule Events
+                </p>
+                <div class="px-lg-5 pb-4 px-3">
+                  <div id="activitieswrapper">
+
+                    <div class="container register">
+                      <div class="row">
+                        <div class="col-md-12 register-right">
+                          <div class="tab-content" id="myTabContent">
+                            <div
+                              class="tab-pane fade show active"
+                              id="home"
+                              role="tabpanel"
+                              aria-labelledby="home-tab"
+                            >
+                              
+                                <div class="row register-form">
+
+                                  <div class="col-md-12 my-2"> 
+                                    <label for="" >Event name *</label>
+                                    <div class="input-group custom-search  my-1">
+                                          <input 
+                                          type="text" 
+                                          class="border border-dark form-control custom-search-input" 
+                                          placeholder="Enter event name"
+                                          name="event_name"
+                                          required>
+                                          <button 
+                                          class="custom-search-botton"
+                                          onclick="addDescription()" 
+                                          type="button">Add Description</button>  
+                                    </div>
+                                  </div>
+              
+                                  <div class="col-md-4 my-2">
+                                      <label for="">Date *</label>
+                                      <div class="form-group my-1">
+                                          <input
+                                              type="date"
+                                              name="event_date"
+                                              class="form-control border border-dark "
+                                              required
+                                          />
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4 my-2">
+                                      <label for="">Time *</label>
+                                      <div class="form-group group_form my-1">
+                                          <input
+                                              type="time"
+                                              name="event_time"
+                                              class="form-control border border-dark"
+                                              required
+                                          />
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4 my-2">
+                                      <label for="">Duration *</label>
+                                      <div class="form-group my-1">
+                                          <input
+                                              type="text "
+                                              name="event_duration"
+                                              class="form-control border border-dark"
+                                              required
+                                          />
+                                      </div>
+                                  </div>
+
+                                  <div class="col-md-12 my-2"> 
+                                    <label for="" >Location *</label>
+                                      <div class="input-group custom-search my-1">
+                                        <input 
+                                            type="text" 
+                                            class="border border-dark form-control custom-search-input" 
+                                            placeholder="Choose event location"
+                                            required
+                                            name="location"
+                                        >
+                                        <!-- <button 
+                                            class="custom-search-botton" 
+                                            type="submit">Pin Google Map  
+                                        </button>   -->
+                                      </div>
+                                  </div>
+
+                                  <div class="row pe-0" id="addGuestForm" >
+                                    <div class="col-12 px-0">
+                                    <div class="col-md-12 my-2 pe-0"> 
+                                      <label for="">Add guests *</label>
+                                      <div class="input-group custom-search my-1">
+                                          <input 
+                                              type="email" 
+                                              id="emailInput"
+                                              name="email"
+                                              class="border border-dark form-control custom-search-input rounded-start rounded-0" 
+                                              placeholder="Enter email id of guest e.g. ni3.works@google.com"
+                                          >
+                                          <button class="btn text-light add-row" type="button" id="add_button21" style="background-color:#ff8b1e !important ">
+                                            <i class="fa fa-plus"></i> <span>Add More</span>
+                                          </button>
+                                      </div>
+                                      <div id="guestList"></div>
+                                  </div>
+                              </div>
+                                  </div>
+                                  <div class="col-md-12 my-2">
+                                    <label for="">Add feature image to display *</label>
+                                      <div class="form-group drop_box my-1">
+                                        <h4>Drag or upload the image</h4>
+                                        <input type="file" name="event_img" class="" id="fileID" style="display:none;">
+                                        <button class="btn5" type="button" style="background-color: #edebec;"> Upload Image</button>
+                                        </div>
+                                        <p>The image uploaded will be displayed in event grid at profile</p>
+                                  </div>
+              
+                                  <div class="col-md-12 my-2">
+                                    <label for="">Upload attachment *</label>
+                                      <div class="form-group drop_box my-1">
+                                        <h4>Drag or upload the attachement</h4>
+                                        <input type="file" name="event_file" class="" id="fileID" style="display:none;">
+                                        <button class="btn5" type="button" style="background-color: #edebec;"> Upload File</button>
+                                        </div>
+                                        <p>You can upload document for participants e.g. information, Form etc.</p>
+                                  </div>
+              
+                                </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <div class="d-flex align-self-end justify-content-end me-4 mb-5 pb-4">
+          <button type="reset" class="mx-2 btn btn-success d-flex align-items-center" style="
+                font-size: 13px;
+                color: white;
+                font-weight: 600;
+              ">
+            Clear Form
+          </button>
+          <button type="submit" class="mx-2 btn d-flex align-items-center active-btn" style="
+                background-color: #ff8b1e !important;
+                font-size: 13px;
+                color: white;
+                font-weight: 600;
+              ">
+            Schedule Event
+          </button>
+        </div>
+      </form>
+    </div>
